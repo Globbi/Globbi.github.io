@@ -1,0 +1,78 @@
+body {
+    background-color: lightgray;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px
+}
+
+#container {
+    background-color: white;
+
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    width: 100%;
+    max-width: 60em;
+    display: flex;
+    flex-direction: column;
+}
+
+.assignment {
+    padding: 2rem;
+}
+
+.title {
+    margin: 0 0.6rem 0 0.6rem;
+    display: flex;
+    justify-content: space-between;
+}
+.title>h4, .title>h5 {
+    margin-top: 0;
+}
+
+.tasks {
+    border-radius: 15px;
+    box-shadow: inset 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    display: grid;
+    grid-gap: 1.5rem;
+
+    grid-template-columns:  repeat(3, 1fr);
+}
+.task {
+    display: flex;
+    gap: 0.5rem;
+}
+.task>.label {
+    min-width: 1.5rem;
+    text-align: right;
+    margin-right: .4rem;
+}
+.task>.math {
+
+}
+
+ /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 650px) {
+    .tasks {
+        grid-template-columns:  repeat(1, 1fr);
+        grid-gap: 3rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 650px) {
+    .tasks {
+        grid-template-columns:  repeat(2, 1fr);
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 850px) {
+    .tasks {
+        grid-template-columns:  repeat(3, 1fr);
+    }
+}

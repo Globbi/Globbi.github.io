@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="assignment">
+            <div class="title">
+                <h4 id="title-text">Unable to load assignment</h4>
+                <a href="#" id="seed">#????</a>
+            </div>
+            <div class="tasks">
+                <!-- generate tasks here -->
+            </div>
+        </div>
+    </div>
+    <template id="task-template">
+        <div class="task">
+            <div class="label"></div>
+            <div class="math"></div>
+        </div>
+    </template>
+    <script id="assignment-generator" src="script.js"></script>
+</body>
+</html>
