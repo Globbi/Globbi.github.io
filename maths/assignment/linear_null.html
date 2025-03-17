@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Random Maths</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="assignment" class="assignment" data-gen="linear" data-count="12" data-rangeA="-10,10" data-rangeB="-10,10">
+            <div id="title" class="title">
+                <h4 id="title-text">Bestimme die Nullpunkte der linearen Funktionen (x- und y-Achse)</h4>
+                <a href="#" id="seed">#????</a>
+            </div>
+            <div id="tasks" class="tasks task-grid">
+                <!-- generate tasks here -->
+            </div>
+        </div>
+    </div>
+    <div id="explanationplus" class="plus">+</div>
+    <div id="explanation" class="container">
+        <div class="assignment">
+            <div class="explanation">
+                <h4>Nullstellen (x-Achse):</h4>
+                <p>Zur Bestimmung der Nullstellen auf der x-Achse wird \(f(x)=0\) gestellt und nach \(x\) aufgeloest.</p>
+                <p>Bsp.: \(f(x)=3x-12\)</p>
+                <div>
+                    $$\begin{align}
+                    3x - 12 &= 0 && \text{|}+12\\
+                    3x &= 12 && \text{|}:3\\
+                    x &= 4
+                    \end{align}$$
+                </div>
+                <p>Der Schnittpunkt mit der x-Achse ist bei (4|0).</p>
+                <h4>Nullstellen (y-Achse):</h4>
+                <p>Zur Bestimmung der Nullstellen auf der y-Achse wird \(x\) gleich \(0\) gesetzt und die Funktion ausgerechnet.</p>
+                <p>Bsp.: \(f(x)=3x-12\)</p>
+                <div>
+                    $$\begin{align}
+                    f (0) &= 3\cdot0 - 12 \\
+                    &= 0 - 12 \\
+                    &= -12
+                    \end{align}$$
+                </div>
+                <p>Der Schnittpunkt mit der y-Achse ist bei (0|-12).</p>
+            </div>
+        </div>
+    </div>
+    <template id="task-template">
+        <div class="task">
+            <div class="label"></div>
+            <div class="math"></div>
+        </div>
+    </template>
+    <script id="assignment-generators" src="generators.js"></script>
+    <script id="assignment-main" src="main.js"></script>
+</body>
+</html>
