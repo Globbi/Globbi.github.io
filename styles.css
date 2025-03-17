@@ -61,6 +61,12 @@ body {
         grid-template-columns:  repeat(1, 1fr);
         grid-gap: 3rem;
     }
+    .assignment {
+        padding: 1rem;
+    }
+    body {
+        padding: 10px;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

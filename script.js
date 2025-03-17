@@ -57,9 +57,7 @@ const assignments = {
     }
 };
 
-function main() {
-    const config = parseConfig();
-
+function loadAssignment(config) {
     if (config.seed === null) {
         // Seed missing -> create new
         config.seed = createSeed();
@@ -69,9 +67,9 @@ function main() {
     }
 
     // set seed for display
-    const titleText = document.querySelector("#seed");
-    titleText.innerHTML = "#" + config.seed;
-    titleText.addEventListener("click", () => {
+    const seedText= document.querySelector("#seed");
+    seedText.innerHTML = "#" + config.seed;
+    seedText.addEventListener("click", () => {
         if (confirm("Neuen Seed generieren?")) {
             const url = new URL(location);
             url.searchParams.delete("seed");
@@ -79,14 +77,12 @@ function main() {
         }
     });
 
-
+    // get assignment configuration
     const assignment = assignments[config.assignment];
 
     // set assignment title
-    if (!!assignment) {
-        const titleText = document.querySelector("#title-text");
-        titleText.innerHTML = assignment.title;
-    }
+    const titleText = document.querySelector("#title-text");
+    titleText.innerHTML = assignment.title;
 
     // generate assignments
     const prng = splitmix32(config.seed);
@@ -109,6 +105,32 @@ function main() {
 
     if (!!window.MathJax) {
         MathJax.typeset();
+    }
+}
+
+function listAssignments() {
+    const titleText = document.querySelector("#title-text");
+    titleText.innerHTML = "Waehle einen Aufgabe aus...";
+
+    const tasks = document.querySelector(".tasks");
+    for (let key in assignments) {
+        const assignment = assignments[key];
+        const link = document.createElement("a");
+        const url = new URL(location);
+        url.searchParams.append("assignment", key)
+        link.href = url;
+        link.innerHTML = assignment.title;
+        tasks.append(link);
+    }
+}
+
+function main() {
+    const config = parseConfig();
+
+    if (config.assignment !== null) {
+        loadAssignment(config);
+    } else {
+        listAssignments();
     }
 }
 
