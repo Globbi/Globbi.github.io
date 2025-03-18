@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Random Maths</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="assignment" class="assignment" data-gen="linear-twice" data-count="12" data-rangeA="-10,10" data-rangeB="-10,10">
+            <div id="title" class="title">
+                <h4 id="title-text">Bestimme den Schnittpunkt zwischen den zwei linearen Funktionen</h4>
+                <a href="#" id="seed">#????</a>
+            </div>
+            <div id="tasks" class="tasks task-grid">
+                <!-- generate tasks here -->
+            </div>
+        </div>
+    </div>
+    <div id="explanationplus" class="plus">+</div>
+    <div id="explanation" class="container">
+        <div class="assignment">
+            <div class="explanation">
+                <h4>Schnittpunkt zweier linearen Funktionen</h4>
+                <p>Um den Schnittpunkt zweier beliebiger Funktionen zu bestimmen, stellt man sie gleich und loest nach \(x\) auf.</p>
+                <p>Bsp.: <span style="margin: 0 0.6em;" >\(f(x)=3x-3\)</span> und <span style="margin: 0 0.6em;" >\(g(x)=-2x+7\)</span></p>
+                <div>
+                    $$\begin{align}
+                    f(x) &= g(x) \\
+                    3x - 3 &= -2x + 7 && \text{|} +3 \\
+                    3x &= -2x + 10 && \text{|} +2x \\
+                    5x &= 10 && \text{|} :5 \\
+                    x &= 2
+                    \end{align}$$
+                </div>
+                <p>Nun muss man den x-Wert in eine der beiden Funktionen einsetzten. Welche ist egal. Wir nehmen hier \(f(x)\).</p>
+                <div>
+                    $$\begin{align}
+                    f(2) &= 3 \cdot 2 - 3 && \text{| x=2 eingesetzt.} \\
+                    &= 6 - 3 \\
+                    &= 3 \\
+                    \end{align}$$
+                </div>
+                <p>Die beiden Funktionen schneiden sich in dem Punkt (2|3).</p>
+                <h4>Sonderfall: Kein Schnittpunkt</h4>
+                <p>Es kann vorkommen, dass Funktionen sich <i>nicht</i> schneiden. In so einem Fall kommt bei der
+                    Aufloesung anstelle von <span style="margin: 0 0.6em;" >\(x = \dots\)</span> ein Widerspruch raus.</p>
+                <p>Bsp.: <span style="margin: 0 0.6em;" >\(f(x)=2x-2\)</span> und <span style="margin: 0 0.6em;" >\(g(x)=2x+3\)</span></p>
+                <div>
+                    $$\begin{align}
+                    f(x) &= g(x) \\
+                    2x-2 &= 2x+3 && \text{|}+2 \\
+                    2x &= 2x+5 && \text{|}-2x \\
+                    0 &\neq 5
+                    \end{align}$$
+                </div>
+                <p>Die Aussage 0 = 5 ist ein Widerspruch und bedeutet, dass die beiden Funktionen <i>keinen</i> Schnittpunkt haben.</p>
+            </div>
+        </div>
+    </div>
+    <template id="task-template">
+        <div class="task">
+            <div class="label"></div>
+            <div class="math"></div>
+        </div>
+    </template>
+    <script id="assignment-generators" src="generators.js"></script>
+    <script id="assignment-main" src="main.js"></script>
+</body>
+</html>

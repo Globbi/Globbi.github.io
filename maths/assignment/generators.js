@@ -43,7 +43,7 @@ const generators = {
         rnd,
         { rangea: new cRange(-10, 10), rangeb: new cRange(-10, 10) },
         function(rnd, config) {
-            let fun = "f(x) = ";
+            let fun = "f(x)=";
 
             let a = rnd.nextInt(config.rangea.min, config.rangea.max);
             if (a === 0) a = 1;
@@ -61,7 +61,7 @@ const generators = {
         rnd,
         { rangean: new cRange(0), rangead: new cRange(0), rangebn: new cRange(0), rangebd: new cRange(0) },
         function(rnd, config) {
-            let fun = "f(x) = ";
+            let fun = "f(x)=";
 
             const aFrac = rnd.nextFrac(
                 config.rangean.min, config.rangean.max,
@@ -90,6 +90,21 @@ const generators = {
             }
 
             return `\\(${fun}\\)`
+        }
+    ),
+    "linear-twice": (rnd) => new Generator(
+        rnd,
+        { rangea: new cRange(-10, 10), rangeb: new cRange(-10, 10) },
+        function(rnd, config) {
+            const linear = generators["linear"](rnd)._fun;
+            let f = linear(rnd, config);
+            console.log(f);
+            f = "f(x)&=" + f.substring(7, f.length - 2);
+            console.log(f);
+            let g = linear(rnd, config);
+            g = "g(x)&=" + g.substring(7, g.length - 2);
+
+            return `\\(\\begin{align}${f} \\\\ ${g}\\end{align}\\)`
         }
     ),
 };
