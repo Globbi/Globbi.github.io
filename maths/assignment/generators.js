@@ -45,14 +45,12 @@ const generators = {
         function(rnd, config) {
             let fun = "f(x)=";
 
-            let a = rnd.nextInt(config.rangea.min, config.rangea.max);
-            if (a === 0) a = 1;
-            if (Math.abs(a) === 1) a = (a < 0) ? "-" : "";
-            fun += a + "x";
+            const a = rnd.nextInt(config.rangea.min, config.rangea.max);
+            if (!a.value) a.value = 1;
+            fun += a.optSign + a.optValue + "x";
 
             const b = rnd.nextInt(config.rangeb.min, config.rangeb.max);
-            fun += (b > 0) ? "+" : "";
-            fun += (b !== 0) ? b : "";
+            if (b.value) fun += b.sign + b.value;
 
             return `\\(${fun}\\)`
         }
@@ -63,31 +61,18 @@ const generators = {
         function(rnd, config) {
             let fun = "f(x)=";
 
-            const aFrac = rnd.nextFrac(
+            const a = rnd.nextFrac(
                 config.rangean.min, config.rangean.max,
                 config.rangead.min, config.rangead.max
             );
-            fun += (aFrac.numerator < 0) ? "-" : "";
-            if (aFrac.numerator === 0) aFrac.numerator = 1;
-            aFrac.numerator = Math.abs(aFrac.numerator);
-            if (aFrac.numerator !== aFrac.denominator) {
-                fun += `\\frac{${aFrac.numerator}}{${aFrac.denominator}}`
-            }
-            fun += "x";
+            if (!a.num) a.rawNum = 1;
+            fun += a.optSign + a.optFrac + "x";
 
-            const bFrac = rnd.nextFrac(
+            const b = rnd.nextFrac(
                 config.rangebn.min, config.rangebn.max,
                 config.rangebd.min, config.rangebd.max
             );
-            if (bFrac.numerator !== 0) {
-                fun += (bFrac.numerator < 0) ? "-" : "+";
-                bFrac.numerator = Math.abs(bFrac.numerator);
-                if (bFrac.numerator !== bFrac.denominator) {
-                    fun += `\\frac{${bFrac.numerator}}{${bFrac.denominator}}`
-                } else {
-                    fun += "1";
-                }
-            }
+            if (b.num) fun += b.sign + b.frac;
 
             return `\\(${fun}\\)`
         }
@@ -98,9 +83,7 @@ const generators = {
         function(rnd, config) {
             const linear = generators["linear"](rnd)._fun;
             let f = linear(rnd, config);
-            console.log(f);
             f = "f(x)&=" + f.substring(7, f.length - 2);
-            console.log(f);
             let g = linear(rnd, config);
             g = "g(x)&=" + g.substring(7, g.length - 2);
 

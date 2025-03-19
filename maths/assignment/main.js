@@ -11,27 +11,66 @@ function _splitmix32(a) {
     }
 }
 
+class rNum {
+    constructor(value) {
+        this.raw = value;
+    }
+    get sign() {
+        return this.raw < 0 ? "-" : "+";
+    }
+    get optSign() {
+        return this.raw < 0 ? "-" : "";
+    }
+    get value() {
+        return Math.abs(this.raw);
+    }
+    get optValue() {
+        return (this.value === 1) ? "" : this.value;
+    }
+}
+class rFrac {
+    constructor(n, d) {
+        this.rawNum = Math.sign(n) * Math.sign(d) * n;
+        this.denom = Math.abs(d);
+    }
+    get num() {
+        return Math.abs(this.rawNum);
+    }
+    get sign() {
+        return this.rawNum < 0 ? "-" : "+";
+    }
+    get optSign() {
+        return this.rawNum < 0 ? "-" : "";
+    }
+    get frac() {
+        return (this.num === this.denom) ? 1 : `\\frac{${this.num}}{${this.denom}}`;
+    }
+    get optFrac() {
+        const f = this.frac;
+        return (f === 1) ? "" : f;
+    }
+}
+
 // random number generator
 function random(seed) {
     return {
         _generator: _splitmix32(seed),
         next: function() {
-            return this._generator();
+            return new rNum(this._generator());
         },
         nextInt: function(from, to) {
-            return Math.trunc(this._generator() * (to - from)) + from;
+            return new rNum(Math.trunc(this._generator() * (to - from)) + from);
         },
         nextFloat: function(from, to) {
-            return Math.round(this._generator() * (to - from) * 100 + from * 100) / 100;
+            return new rNum(Math.round(this._generator() * (to - from) * 100 + from * 100) / 100);
         },
         nextFrac: function(fromNum, toNum, fromDenom, toDenom) {
-            const frac = {};
-            frac.numerator = this.nextInt(fromNum, toNum);
-            frac.denominator = this.nextInt(
-                Math.max(Math.max(0, fromDenom), Math.abs(frac.numerator)),
-                Math.max(Math.max(0, toDenom), Math.abs(frac.numerator))
+            const n = this.nextInt(fromNum, toNum);
+            const d = this.nextInt(
+                Math.max(Math.max(0, fromDenom), Math.abs(n.raw)),
+                Math.max(Math.max(0, toDenom), Math.abs(n.raw))
             );
-            return frac;
+            return new rFrac(n.raw, d.raw);
         }
     }
 }
@@ -121,12 +160,6 @@ function _main() {
 
     // generate assignments
     generateAssignments(generator, config.count)
-
-    // hide explanation
-    explanationplus.addEventListener("click", () => {
-        explanation.hidden = !explanation.hidden;
-    });
-    explanation.hidden = true;
 }
 
 document.addEventListener("DOMContentLoaded", _main, false);
