@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Nullstellen quadratische Funktionen (pq-Formel)</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="assignment" class="assignment" data-gen="quad" data-count="12" data-rangeA="-3,3" data-rangeB="-10,10" data-rangeC="-10,10">
+            <div id="title" class="title">
+                <h4 id="title-text">Bestimme die Nullpunkte der quadratischen Funktionen (x- und y-Achse)</h4>
+                <a href="#" id="seed">#????</a>
+            </div>
+            <div id="tasks" class="tasks task-grid">
+                <!-- generate tasks here -->
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="assignment">
+            <div class="explanation">
+                <h4>Nullstellen (x-Achse):</h4>
+                <p>
+                    Zur Bestimmung der Nullstellen auf der x-Achse wird \(f(x)=0\) gestellt und nach \(x\) aufgeloest.
+                    Wenn die Funktionen keinen einfachen \(x\)-Teil hat, dann ist die Rechnung trivial.
+                </p>
+                <p>Bsp.: \(f(x)=-2x^2 +8\)</p>
+                <div>
+                    $$\begin{align}
+                    -2x^2 +8 &=  0 && | -8 \\[7px]
+                    -2x^2    &= -8 && | : -2 \\[7px]
+                      x^2    &=  4 && | \sqrt{\quad} \\[7px]
+                      \sqrt{x^2}  &=  \sqrt{4} \\[7px]
+                      x_{1/2}  &=  \sqrt{4}
+                    \end{align}$$
+                </div>
+                <div style="margin-top: 3em;">
+                    $$\begin{align*}
+                    x_1 &= -2 & x_2 &= 2
+                    \end{align*}$$
+                </div>
+                <p>Der Schnittpunkt mit der x-Achse sind bei (-2|0) und (2|0).</p>
+                <h4>Nullstellen mit pq-Formel (x-Achse):</h4>
+                <p>Zur Bestimmung der Nullstellen auf der x-Achse wird \(f(x)=0\) gestellt und nach \(x\) aufgeloest.
+                In der Regel wird hierfuer die pq-Formel verwendet.</p>
+                <p>In dem folgenden Beispiel wird die Formel gebraucht, aber bevor man sie anwenden darf, <b>muss</b> die
+                Gleichung in die richtige Form gebracht werden!</p>
+                <p>Die 1. Voraussetzung ist, dass auf einer Seite 0 steht => <span style="margin: 0 0.6em;">\(... = 0\)</span></p>
+                <p>Die 2. Voraussetzung ist, dass vor \(x^2\) nichts (bzw. eine versteckte 1) steht.</p>
+                <p>Bsp.: \(f(x)=-2x^2+3x+12\)</p>
+                <div>
+                    $$\begin{array}{ccccccc}
+                    -2x^2            & +3x            & +12            &= & 0            &\quad & \text{|}:-2 \\[10px]
+                    \frac{-2x^2}{-2} & +\frac{3x}{-2} & +\frac{12}{-2} &= & \frac{0}{-2} \\[10px]
+                    x^2              & \underbrace{-\frac{3}{2}}_{p} x & \underbrace{-6}_{q} &= & 0
+                    \end{array}$$
+                </div>
+                <p>Mit \(p=-\frac{3}{2}\) und \(q=-6\) koennen wir nun die pq-Formel anwenden, um die Nullstellen zu
+                bestimmen.</p>
+                <div>pq-Formel: $$ x_{1/2} = -\frac{p}{2} \pm \sqrt{(\frac{p}{2})^2 - q} $$</div>
+                <div>Einsetzen und Umformen:
+                    $$\begin{align}
+                    x_{1/2} &= -(\frac{-\frac{3}{2}}{2}) \pm \sqrt{( \frac{-\frac{3}{2}}{2})^2 - (-6) }     \\[10px]
+                    \quad   &= -(\frac{-3}{2 \cdot 2})   \pm \sqrt{( \frac{-3}{2 \cdot 2}  )^2 - (-6) }     \\[10px]
+                    \quad   &= \frac{3}{4}               \pm \sqrt{( -\frac{3}{4} )^2 + 6 }     \\[10px]
+                    \quad   &= \frac{3}{4}               \pm \sqrt{ \frac{3^2}{4^2} + 6 }    && ^1 \\[10px]
+                    \quad   &= \frac{3}{4}               \pm \sqrt{ \frac{9}{16} + 6 }    \\[10px]
+                    x_{1/2} &= \frac{3}{4}               \pm \sqrt{ 6\frac{9}{16} }
+                    \end{align}$$
+                </div>
+                <p style="font-size: 0.6em;">1 Das Minus entfaellt, weil das Quadrat einer negativen Zahl <b>immer</b> positiv ist.</p>
+                <div>Ausrechnen:
+                    $$\begin{align*}
+                    x_1 &= \frac{3}{4} - \sqrt{ 6\frac{9}{16} } & x_2 &= \frac{3}{4} + \sqrt{ 6\frac{9}{16} } \\[10px]
+                    x_1 &\approx -1.81 & x_2 &\approx 3.31
+                    \end{align*}$$
+                </div>
+                <p>Der Schnittpunkt mit der x-Achse sind bei (-1.81|0) und (3.31|0).</p>
+                <h4>Nullstellen (y-Achse):</h4>
+                <p>Zur Bestimmung der Nullstellen auf der y-Achse wird \(x\) gleich \(0\) gesetzt und die Funktion ausgerechnet.</p>
+                <p>Bsp.: \(f(x)=-2x^2+3x+12\)</p>
+                <div>
+                    $$\begin{array}{ccccccc}
+                    f(0)  & = & -2\cdot0^2 & + & 3\cdot0 & + & 12 \\
+                    \quad & = & -2\cdot0   & + & 3\cdot0 & + & 12 \\
+                    \quad & = & 0          & + & 0 & + & 12 \\
+                    \quad & = & 12 \\
+                    \end{array}$$
+                </div>
+                <p>Der Schnittpunkt mit der y-Achse ist bei (0|12).</p>
+            </div>
+            <div class="explanation">
+                <h4>Ausnahme: Nur eine Nullstelle</h4>
+                <p>
+                    Es kann vorkommen, dass eine quadratische Funktion nur eine Nullstelle hat.
+                    Dies erkennt man daran, dass bei der pq-Formel am Ende kein Wurzelteil überbleibt.
+                    Da steht dann sowas wie <span style="margin: 0 .6em">\(x_{1/2}=\frac{3}{4} \pm \sqrt{0}\)</span>
+                    was wiederum das gleich ist wie <span style="margin: 0 .6em">\(x_{1/2}=\frac{3}{4}\)</span>.
+                    Die einzige Nullstelle in dem Fall ist (\(\frac{3}{4}\)|0).
+                </p>
+                <h4>Ausnahme: <i>Keine</i> Nullstellen</h4>
+                <p>
+                    Bei einer quadratischen Funktion gehen die Schenkel in die gleich Richtung, weswegen es auch
+                    vorkommen kann, dass der Graph komplett ueber oder komplett unter der x-Achse liegt. Oder in anderen
+                    Worten die x-Achse niemals schneidet. Diesen Fall erkennst du daran, dass am Ende der pq-Formel unter der Wurzel
+                    eine <i>negative</i> Zahl (Bsp.: <span style="margin: 0 .6em">\(\sqrt{-\frac{5}{7}}\)</span>) steht.
+                    Aus negativen Zahlen kann man keine Wurzel bestimmen, und damit gibt es auch keine Nullstellen.
+                </p>
+            </div>
+        </div>
+    </div>
+    <template id="task-template">
+        <div class="task">
+            <div class="label"></div>
+            <div class="math"></div>
+        </div>
+    </template>
+    <script id="assignment-generators" src="generators.js"></script>
+    <script id="assignment-main" src="main.js"></script>
+</body>
+</html>

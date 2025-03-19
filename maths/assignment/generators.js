@@ -90,4 +90,23 @@ const generators = {
             return `\\(\\begin{align}${f} \\\\ ${g}\\end{align}\\)`
         }
     ),
+    "quad": (rnd) => new Generator(
+        rnd,
+        { rangea: new cRange(-3, 3), rangeb: new cRange(-10, 10), rangec: new cRange(-10, 10) },
+        function(rnd, config) {
+            let fun = "f(x)=";
+
+            const a = rnd.nextInt(config.rangea.min, config.rangea.max);
+            if (!a.value) a.value = 1;
+            fun += a.optSign + a.optValue + "x^2";
+
+            const b = rnd.nextInt(config.rangeb.min, config.rangeb.max);
+            if (b.value) fun += b.sign + b.optValue + "x";
+
+            const c = rnd.nextInt(config.rangec.min, config.rangec.max);
+            if (c.value) fun += c.sign + c.value;
+
+            return `\\(${fun}\\)`
+        }
+    ),
 };
